@@ -1,28 +1,31 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>All Posts template</h3>
+    <post-template></post-template>
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      posts: [],
+      url: {
+        posts: 'https://jsonplaceholder.typicode.com/posts?_limit=3',
+        users: 'https://jsonplaceholder.typicode.com/users',
+        comments: 'https://jsonplaceholder.typicode.com/comments?postId=1'
+      }
+    }
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: 16px;
 }
 </style>
