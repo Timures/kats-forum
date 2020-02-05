@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="user in checkUser" :key="user.id">
+    <div v-for="user in checkUser" :key="user.id" class="username text-secondary">
       {{ user.name }}
     </div>
   </div>
