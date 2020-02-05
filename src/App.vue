@@ -1,7 +1,19 @@
 <template>
   <div id="app">
-    <h3>All Posts template</h3>
-    <post-template></post-template>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+
+          <posts-template :posts="posts" :users="users" :comments="comments">
+          </posts-template>
+        </div>
+
+        <div class="col-md-3 bg-light mt-4">
+          
+        </div>
+      </div>
+    </div>
+    
     
   </div>
 </template>
@@ -9,16 +21,42 @@
 <script>
 
 
-export default {
+export default {  
   name: 'app',
   data() {
     return {
-      posts: [],
       url: {
-        posts: 'https://jsonplaceholder.typicode.com/posts?_limit=3',
-        users: 'https://jsonplaceholder.typicode.com/users',
-        comments: 'https://jsonplaceholder.typicode.com/comments?postId=1'
-      }
+        posts: 'https://jsonplaceholder.typicode.com/posts?_limit=15',
+        users: 'https://jsonplaceholder.typicode.com/users'
+      },
+      posts: [],
+      users: [],
+      comments: [],
+      clearUsers: []
+    }    
+  },
+  mounted() {
+    this.getPosts();
+    this.getUsers();
+  },
+  methods: {
+    getPosts() {
+      this.axios.get(this.url.posts).then((response) => {
+      this.posts = response.data;   
+      })
+      .catch(error => {
+        console.log('--- error ---');
+        console.log(error);
+      });
+    },
+    getUsers() {
+      this.axios.get(this.url.users).then((response) => {        
+      this.users = response.data;
+      })
+      .catch(error => {
+        console.log('--- error ---');
+        console.log(error);
+      });
     }
   }
 }

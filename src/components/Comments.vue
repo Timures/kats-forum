@@ -1,10 +1,8 @@
 <template>
   <div>
     <div v-for="comment in comments" :key="comment.id">
-      <h4> Comments</h4>
-      <p>{{ comment.name }}</p>
-      <p>{{ comment.body }}</p>
-    </div>    
+      {{ comment.email }}
+    </div>
   </div>
 </template>
 
